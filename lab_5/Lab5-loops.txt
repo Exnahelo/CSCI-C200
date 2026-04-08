@@ -1,0 +1,81 @@
+CSCI-C 200
+Lab 5 – Loops
+Due Date: February 18, Wednesday, 11:59pm
+Accept Until: February 25, Wednesday, 11:59pm (with late penalties)
+
+Purpose
+In the previous labs, you have practiced using if/else structures to perform input validations and to determine what action to perform based on a user selection. Now you will add loop structure(s) to control how many times user is allowed to enter wrong inputs. You can use this lab to polish lab 4 or redo lab 4. If your Lab 5 grade is higher than Lab 4 grade, your Lab 4 grade will be replaced by the new grade. 
+In this lab, you'll continue to explore how AI tools like ChatGPT can support your programming tasks, with the aim of improving the quality of your work. If you don’t have a preferred AI tool, you can use Microsoft Copilot offered to all IU students (sign in to office.iu.edu, click on Apps and find Copilot). This will again be optional. 
+Description
+Design a program that will perform a task based on user inputs. User will be asked to enter value(s) and select from a list of choices, e.g. if your program is about length conversion, the users will be asked to enter a number in centimeter, then be asked to choose what unit of measurement to convert into, and the choice can be: 
+	•	meter
+	•	millimeter
+	•	inch
+	•	foot
+…
+
+The above are requirements from Lab 4. For this lab, you will add the following features: 
+If user has entered an invalid entry (e.g. user did not enter a numeric value as required, either entry is not numerical, or out of the desired range, or not one of the allowed entries), user will be asked to try again, for up to 5 times. After 5 times, program will exit with a message. If all entries are valid, program will output a message with input values and final result, e.g. 20 centimeters is equal to 0.2 meters. 
+
+A sample program (loginControl.py, verify.py) can be found in Canvas-Files-Labs-Lab 5 folder. Download both files, upload them to your program space(either on pythonanywhere.com or your local computer), and run the loginControl.py file to see the behavior. 
+
+
+
+Learning Outcomes
+Upon successful completion of this lab, you will be able to
+	•	Understand relational operators and logical operators 
+	•	Understand conditional executions
+	•	Implement input validations
+	•	Understand the purpose of and create module files
+	•	Understand algorithm design
+	•	Understand loops
+
+Tasks
+	•	Study the sample program in great details until you understand the logics in the program. 
+	•	Examine your lab 4, and determine if you need to add codes to lab 4, or start over.  
+	•	Examine the algorithm design you created for lab 4, and determine if you need to add to it or rewrite a new one. 
+	•	Create a new or revised algorithm design.  
+	•	Start coding – following your design, and gradually add and test each block or each function. Revise the design if necessary. 
+	•	For extra credits – compile a problem description and send it to ChatGPT or Copilot, compare the output with your own program, and answer the extra credit questions. 
+
+Rubric
+
+	•	Ask for at least one value input (5’)
+	•	Validate the value input (input cannot be empty; numeric values must be validated). If wrong entries are entered 5 times, terminate the program (8’) with a message (2’). 
+	•	Ask for at least one input from a list of choices (5’)
+	•	Validate the choice input (input must be one of the choices). If a wrong entry is entered 5 times,  terminate the program (8’) with a message (2’).
+	•	Each choice of the same nature is defined as a function, and these functions are grouped in a utility file. If you have a choice for exiting the program, this choice doesn’t need to be defined as a function. (5’)
+	•	Main actions happen in the executable file. (10’)
+	•	Program generates correct outputs (15’). 
+	•	Program output(s) are displayed using a complete sentence with input values and final result. (5’)
+	•	Follow professional coding standards – 
+	•	file header(2’)
+	•	variable initialization block (3’)
+	•	ample comments(5’)
+	•	well-organized code blocks(3’)
+	•	good naming conventions(2’)
+	•	Algorithm design:
+	•	Algorithm design includes a Problem Description section. (2’)
+	•	Algorithm design shows the overall structure of the program. (5’)
+	•	Algorithm design is well structured using indentations. (3’)
+	•	Algorithm design shows correct execution steps. (3’)
+	•	Algorithm design includes a section showing designs for each function in the utility file. (2’) 
+	•	Program follows the algorithm design. (5’)
+
+
+Extra Credits
+Use an AI tool to create the program for you, compare the results and answer the following questions. 
+	•	What tool did you use? (1’)
+	•	After the first run, compare your program with the generated program. 
+	•	What are the differences between your program and the AI generated program? (3’)
+You must submit your own program to get extra credits here. 
+	•	Did the AI generated program meet the requirements? If no, what requirements were not met? (3’)
+	•	If both meet the requirements, which program is better (from readability and efficiency point of view)? (3’)
+	•	If you revised your AI prompt(s) to refine the program, provide your revised prompt and a summary of each outcome. (5’)
+	•	If you need to revise your program based on AI generated program, what revision(s) did you make? (5’)
+To get extra credits here, you must submit the first version and revised version of your program, and the AI generated version. 
+
+Note
+If you revised your program based on an AI generated program or submitted an AI generated program without answering questions above, it is a case of Academic Dishonesty and measures will be taken following school or campus protocols. 
+Submission
+Submit your executable file, utility file, algorithm design file, and Lab5AI-toolForExtraCredits.docx(if filled) on Canvas. 

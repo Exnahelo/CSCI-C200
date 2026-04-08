@@ -1,0 +1,26 @@
+Sample Algorithm Design
+Problem Description
+This program asks user to enter a dollar amount and convert it into amount in Chinese Yuan. 
+Algorithm Design
+	•	File header that contains
+	•	Program name
+	•	Problem description
+	•	Author name
+	•	First-create date
+	•	Version number
+	•	Variable creation block
+	•	name
+	•	dollarValue
+	•	convertedResult
+	•	Take user input
+	•	Ask user to enter name
+	•	Ask user to enter a dollar amount
+	•	change the dollar amount entry to float type
+	•	Define the conversion function
+	•	Function name: convertToYuan
+	•	Input parameter: dollar 
+	•	Formula: dollar*7.1
+	•	Return the converted value
+	•	Call the conversion function, and store result to a variable
+	•	Display final result
+	•	Print out a complete sentence showing user’s name, dollar amount and the converted value. 

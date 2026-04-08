@@ -1,0 +1,48 @@
+CSCI-C 200 
+Lab 2 - Variables and Expressions
+Due Date: January 28, Wednesday, 11:59pm
+Accept Until: February 4, Wednesday, 11:59pm (with late penalties)
+Purpose
+Lots of software applications solve particular problems through using formulae, e.g. on an online conversion web site (https://www.onlineconversion.com/), you can perform length conversion, weight conversion etc.  The program will feed input(s) into a certain formula and display a result. This lab will help you understand how data is stored and send into a formula and how to use expression(s) to format a formula. You are actually making a real software application, maybe a small one, but a real one!
+Description
+In this lab, you will create a Python program that solves a problem using a formula that contains variables and expression(s). Find a problem that you have solved before using other methods, such as on paper, using a calculator, using a web application. Here are a few examples - converting a temperature in degrees Fahrenheit to degrees Celsius, converting a US dollar amount to an amount in another currency, finding the area of a triangle, calculating the force of gravity, finding the future value with compound interest etc.   All the values used in the formula must be stored in variables. The output of the program is a complete sentence that states the input value(s) and the result, e.g. 32 degrees Fahrenheit is 0 degrees Celsius.
+Learning Outcomes
+Upon successful completion of this lab, you will be able to
+	•	Understand the purpose of file headers and be able to define a file header with required elements
+	•	Understand the purpose of using variables
+	•	Create variables of three different types (string, int, float) and assign values
+	•	Use a formula to form an expression in which variables are used
+	•	Properly use operators such as a mathematical operator (+, -, *, /), an assignment operator, a string concatenation operator
+	•	Understand the purpose of the str() function and use it where necessary
+	•	Use block comments or single line comments to well organize code blocks
+	•	Follow rules for good coding practice
+Tasks
+	•	Think of a problem that you have solved before, and the result is achieved through a formula where integers or float values are needed in the formula. 
+	•	Examine the formula and find the number of values needed to produce a result. This number is the minimum number of variables you will create. 
+	•	Determine the variable name and type for each variable you will create. 
+	•	On a piece of paper or white board, sketch out the structure of your program in blocks, e.g. the first block will be the file header, the second block will be defining variables and assign values, the third block will use a formula to produce a result, ….
+	•	Go into each block and write down details for that block, e.g. what will be in your file header, what is the name of each variable and what is the value for each…. 
+	•	Now you are ready to start coding. Create a file named yourLastNameLab2.py, follow your sketch and enter codes block by block. Test and debug each block before you add the next block. When you finish testing the entire program, make sure the result is correct and the output is a message. 
+	•	Check all the rubric items to see if you have met all the requirements, edit your program if necessary. Run the program again each time you make a change, until no changes are to be made. 
+	•	Fill out the self-evaluation form. Rename the self-evaluation file to yourLastNameSelfEvaluationLab2.xlsx. 
+
+Rubric
+	•	Your program has a file header (with at least the file name, purpose of the program, problem description, first create date, author, version number) (10’)
+	•	Have a variable initialization/definition block at the beginning of the code section (5’)
+	•	Have a single line comments to describe the purpose of each variable created. (5’)
+	•	Each variable name indicates the purpose of the variable. (4’)
+	•	Variable names follow a naming convention. (3’)
+	•	At least three types of variables are created. (3’)
+	•	All values used in the formula are stored in variables.(5’)
+	•	Each variable type is defined correctly, e.g. a degree in Fahrenheit should be defined as a float type instead of an integer type.   (5’)
+	•	Have code blocks and they are organized in a meaningful way. (5’)
+	•	Use comments to explain the purpose of each block. (5’)
+	•	Program runs and generates a correct output. (20’)
+	•	Program output is a complete sentence with input value(s) and result embedded. Only variables can be used in the print statement to represent values. (5’)
+	•	Program file is named as required. (5’)
+	•	In the self-evaluation file, “Student Name” cell is filled with your full name. (5’)
+	•	In the self-evaluation file, all the cells in the “Your Evaluation Points” field are filled, and explanations are provided if not full credits. (10’)
+	•	Self-evaluation file is renamed correctly. (5’)
+
+Submission
+Submit your Python program file and the self-evaluation file on Canvas.

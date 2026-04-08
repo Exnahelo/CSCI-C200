@@ -1,0 +1,75 @@
+Algorithm Design Document — HoweLab3.py
+
+1) Problem Description
+This program collects Treasury and Corporate yield data across multiple years, computes the yield spread (Corporate − Treasury) for each year, summarizes the spreads (average, minimum, maximum), and estimates simple interest earned using the average Corporate yield and a user-provided principal and investment duration.
+
+2) Algorithm Design
+
+1. File Header
+   a. Program Name: HoweLab3.py
+   b. Purpose: Collect yield data, compute Treasury vs. Corporate spreads, summarize results, and estimate simple interest.
+   c. Author Name: Daniel Howe
+   d. First Created Date: 2026-02-02
+   e. Version Number: 1.0
+
+2. Variable Initialization
+   a. Initialize user name (string) and number of years (integer)
+   b. Initialize lists to store:
+      i. year list
+      ii. treasury yields
+      iii. corporate yields
+      iv. spreads
+   c. Initialize variables to store spread summary statistics:
+      i. average spread
+      ii. minimum spread
+      iii. maximum spread
+   d. Initialize variables for the simple interest estimate:
+      i. principal amount
+      ii. investment years
+      iii. average corporate yield
+      iv. interest earned
+
+3. Function Definitions
+   a. Define a function to read and validate integer input (minimum value enforced)
+   b. Define a function to read and validate float input (minimum value enforced)
+   c. Define a function to compute yield spread (corporate yield − treasury yield)
+   d. Define a function to compute average, minimum, and maximum for a numeric list
+   e. Define a function to compute simple interest earned (no compounding)
+
+4. Input Collection
+   a. Display program title
+   b. Prompt the user for their name
+   c. Prompt the user for the number of years of yield data (must be >= 1)
+   d. Loop for each year entry:
+      i. Prompt for the calendar year
+      ii. Prompt for the Treasury yield (%)
+      iii. Prompt for the Corporate yield (%)
+      iv. Store inputs in their corresponding lists
+
+5. Main Computation
+   a. Loop through the stored yield lists
+   b. Compute the spread for each year and store it in the spreads list
+   c. Compute spread summary statistics (average, minimum, maximum)
+
+6. Investment Calculation
+   a. Display the investment estimate section title
+   b. Prompt the user for principal amount ($)
+   c. Prompt the user for investment duration in years (must be >= 1)
+   d. Compute the average Corporate yield from the stored corporate yield list
+   e. Compute simple interest earned using principal, average corporate yield, and investment years
+
+7. Output Results
+   a. Display results section title
+   b. Display user name (or indicate no name entered)
+   c. Display a yearly table showing:
+      i. year
+      ii. treasury yield (%)
+      iii. corporate yield (%)
+      iv. spread (percentage points)
+   d. Display spread summary statistics (average, minimum, maximum)
+   e. Display simple interest estimate details:
+      i. principal
+      ii. average corporate yield used
+      iii. years
+      iv. estimated interest earned
+   f. Print completion message

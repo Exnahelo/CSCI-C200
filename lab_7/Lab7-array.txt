@@ -1,0 +1,66 @@
+CSCI-C 200
+Lab 7 – List(Array) Operations
+
+Due Date: March 25, Wednesday, 11:59pm
+Accept Until: April 1, Wednesday, 11:59pm (with late penalties)
+
+Purpose
+In this lab, you will practice using loops to create arrays and retrieving values from arrays. You will learn to store and use real world data in a structured way. 
+
+Description
+Get user inputs for different pieces of related information and create arrays to store them in a structured way.  Here are two visual examples what your data look like – 
+	•	The highest-grossing American films released in 2025
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	The above data can be stored in two different ways: 1) using several 1-D arrays, such as use 4 arrays (mimicking 4 columns) and each array has 10 elements(mimicking 10 rows), or stored in 10 arrays and each array has 4 elements.  2)using a 2-D array. You decide how you want to store data. 
+
+
+
+
+
+	•	Indianapolis Colts Player 2025
+
+	Again the above data can be stored in several 1-D arrays or a 2-D array. You decide how to store data.  
+
+All the data will be entered by the user, until the user enters “done” or another indicator. After all the data are stored in arrays, your program will loop through the arrays and output all the information, plus one more piece of information computed from existing data, e.g. in the Colts player example,  besides outputting weight of each player in pounds, you will also output weight in kilograms. 
+
+You don’t have to use the above examples. Whatever information you decide to use, your program must simulate a real-world data collection process, e.g. a human resource application asking user to enter employee information, a program for librarians to enter book information. 
+
+Rubric
+
+	•	Program simulates a real-world scenario. (10’)
+	•	Initial array values are taken from the user inputs. (10’)
+	•	All data are stored in 1-D or 2-D array(s). (20’)
+	•	Loops are used for collecting inputs until the user indicate “done”. (20’)
+	•	Loops are used when displaying outputs. (10’)
+	•	Outputs include a computational result using data from another column or other columns. (10’)
+	•	Outputs are well structured and meaningful. (10’)
+	•	Follow professional coding standards (file headers, comments, code blocks, naming conventions, etc). (10’)
+
+
+
+Extra Credits for Challenging Features (20’)
+Your program will provide a way for a user to edit or delete information. You can decide how you would like to achieve this type of functionality, but the “edit” or “delete” action must start from searching, e.g. ask user to enter a unique username, and when the user is found, ask user what information they would like to edit, then proceed. If the user is not found, provide a way to get back to the main menu or exit. 
+Rubric for Extra Credits:
+	•	“edit” or “delete” feature is incorporated nicely with the non-extra credit portion. (5’)
+	•	“edit” or “delete” feature is implemented correctly. (5’)
+	•	“edit” or “delete" feature starts from a user search. (5’)
+	•	Have a way to get back to the main menu or exit the program. (5’)
+
+Submission
+Submit your program file(s) on Canvas. 

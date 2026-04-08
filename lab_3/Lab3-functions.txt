@@ -1,0 +1,53 @@
+CSCI-C 200
+Lab 3 - Functions
+
+Due Date: February 4, Wednesday, 11:59pm
+Accept Until: February 11, Wednesday, 11:59pm (with late penalties)
+Purpose
+This lab is an extension of lab 2 for you to understand the purpose of using functions. Since  you have learned how to create user-defined functions, you will design functions to solve a problem. 
+Description
+Revise your lab 2 or create a new program that solves a problem. Your program can solve one problem (such as finding area of a triangle), or for extra credits, several problems of the same kind (such as finding areas of different shapes). Other Ideas:
+	•	Implement a simple calculator, e.g. adding, subtracting, multiplying, and dividing two values.	
+	•	Perform different types of conversions, e.g.: 
+	•	length conversions - meter to centimeter, mile to kilometer, inch to centimeter …
+	•	weight conversions – oz to kilogram, kilogram to milligram, pound to kilogram …
+	•	 temperature conversions – Celsius to Fahrenheit, Fahrenheit to Celsius, … 
+Each computation is done through functions definitions and function calls. The input value(s) for the function call(s) must be variables whose values can be defined in the program, or for extra credits, entered through keyboard entry. Your function(s) must return value(s). 
+You will also practice algorithm design through this lab. You will first create an algorithm design that has enough details to show the structure of your program and how each problem is solved in your program. 
+Learning Outcome
+Upon successful completion of this lab, you will be able to
+	•	Understand the purpose of functions and be able to define functions 
+	•	Create functions with input values
+	•	Create functions that return values
+Tasks
+	•	Decide whether you should revise lab 2 or think of a new type of problem to solve. 
+	•	Once you identify what problems to solve, imagine what will happen when the program runs. 
+	•	Use the sample algorithm design file as a guide to layout the main structure of your program, e.g. first block will be a file header, second block will be creating variables, third block will define a function, … 
+	•	Refine each block to include details, e.g. what should be in the file header block. 
+	•	Finalize your algorithm design, e.g. check grammar, levels of indentation, etc. 
+	•	Start coding – following your design, and gradually add and test each block or your function. Revise the design if necessary. 
+
+Rubric
+	•	Function for completing the task is defined properly. (10’)
+	•	Variable(s) are used as function inputs. (10’)
+	•	Variable(s) used as function inputs have correct variable name, type, and value. (10’)
+	•	Function for completing the task returns a value (5’)
+	•	Program runs successfully, and generates correct and meaningful output (10’)
+	•	Have a standard file header (5’)
+	•	Have a variable initialization block. (5’)
+	•	Have good naming conventions (variable names, function names, file name) (5’)
+	•	Have meaningful code blocks (5’)
+	•	Have comments for each code block (5’)
+	•	Have comments for each function definition, explaining the purpose of each function. (5’)
+	•	Algorithm design:
+	•	Algorithm design includes a Problem Description section. (5’)
+	•	Algorithm design shows the overall structure of the program. (5’)
+	•	Algorithm design is well structured using indentations. (5’)
+	•	Algorithm design includes designs to complete each task (as defined through functions). (5’) 
+	•	Program follows the algorithm design. (5’)
+Extra Credits
+	•	Have at least 3 user defined functions. (10’)
+	•	Each function is defined and called correctly. (5’) 
+	•	Input values used in one or all function calls are entered through user keyboard entries. (5’)
+Submission
+Submit your program file and algorithm design file(s) (in .txt or .docx files) on Canvas. There is no requirement on file names. 

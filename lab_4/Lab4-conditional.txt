@@ -1,0 +1,77 @@
+CSCI-C 200
+Lab 4 – Conditional Executions
+Due Date: February 11, Wednesday, 11:59pm
+Accept Until: February 18, Wednesday, 11:59pm (with late penalties)
+Purpose
+In the previous labs, data required to perform tasks are specified inside the programs. In the real world, data is often entered by user, e.g. the program can ask user to enter some values and click on a button to see the result. In this lab, you will practice taking user input, validating inputs and performing a task based on the user choice. Now your software application has become more sophisticated!
+In this lab, you'll begin exploring how AI tools like ChatGPT can support your programming tasks, with the aim of improving the quality of your work. If you don’t have a preferred AI tool, you can use Microsoft Copilot offered to all IU students (sign in to office.iu.edu, click on Apps and find Copilot). It is optional in this lab, but will be mandatory in next lab. If you can, I encourage you to try it and earn extra credits. 
+Description
+Design a program that will perform a task based on user inputs. User will be asked to 1) enter value(s) and 2) select from a list of choices, or in the opposite order. For instance, if your program is about length conversion, the users will be asked to enter a number in centimeter, then be asked to choose what unit of measurement to convert into, and the choice can be: 
+	•	meter
+	•	millimeter
+	•	inch
+	•	foot
+…
+Choose a topic you are familiar with. It can be any topic as long as the rubric requirements can be met. 
+
+A similar program can be found here - https://www.onlineconversion.com/length_common.htm.
+
+Learning Outcomes
+Upon successful completion of this lab, you will be able to
+	•	Practice relational operators and logical operators 
+	•	Understand conditional executions
+	•	Practice input validations
+	•	Understand the purpose of and create module files
+	•	Practice algorithm design
+
+
+
+Tasks
+	•	Think of a problem that takes value(s) from a user, and in which user needs to select a choice from a list before the task can be completed. Feel free to borrow ideas from https://www.onlineconversion.com.
+	•	Once you identify what problems to solve, imagine what will happen when the program runs. 
+	•	Use the sample algorithm design file as a guide to layout the main structure of your program, e.g. 1) file header 2)creating variables 3) ask for user inputs 4) validate user inputs, if validated go to block 5 otherwise say goodbye. 5)perform computation and display result, ….
+	•	Refine each block to include details, e.g. what should be in the file header block. 
+	•	Finalize your algorithm design, e.g. check grammar, levels of indentation, etc. 
+	•	Start coding – following your design, and gradually add and test each block or each function. Revise the design if necessary. 
+	•	Move functions that are of the same nature (e.g. functions can perform different length conversions) into a utility file and import the module into your program. 
+	•	Test your program again. 
+	•	For extra credits – compile a problem description and send it to ChatGPT or Copilot, compare the output with your own program, and answer the extra credit questions. 
+
+Rubric
+
+	•	Ask for at least one value input (5’), and validate the input (input cannot be empty; numeric values must be validated) (10’).
+	•	Ask for at least one input from a list of choices (5’), and validate the input (input must be one of the choices) (10’).
+	•	Each choice of the same nature is defined as a function, and these functions are grouped in a utility file. If you have a choice for exiting the program, this choice doesn’t need to be defined as a function. (5’)
+	•	Main actions happen in the executable file. (10’)
+	•	Program generates correct outputs. (20’)
+	•	Follow professional coding standards – 
+	•	file header(2’)
+	•	variable initialization block (3’)
+	•	ample comments(5’)
+	•	well-organized code blocks(3’)
+	•	good naming conventions(2’)
+	•	Algorithm design:
+	•	Algorithm design includes a Problem Description section. (2’)
+	•	Algorithm design shows the overall structure of the program. (5’)
+	•	Algorithm design is well structured using indentations. (3’)
+	•	Algorithm design shows correct execution steps. (3’)
+	•	Algorithm design includes a section showing designs for each function in the utility file. (2’) 
+	•	Program follows the algorithm design. (5’)
+
+
+Extra Credits
+Use an AI tool to create the program for you, compare the results and answer the following questions using Lab4AI-toolForExtraCredits.docx. 
+	•	What tool did you use? (1’)
+	•	After the first run, compare your program with the generated program. 
+	•	What are the differences between your program and the AI generated program? (3’)
+You must submit your own program to get extra credits here. 
+	•	Did the AI generated program meet the requirements? If no, what requirements were not met? (3’)
+	•	If both meet the requirements, which program is better (from readability and efficiency point of view)? (3’)
+	•	If you revised your AI prompt(s) to refine the program, provide your revised prompt and a summary of each outcome. (5’)
+	•	If you need to revise your program based on AI generated program, what revision(s) did you make? (5’)
+To get extra credits here, you must submit the first version and revised version of your program, and the AI generated version. 
+
+Note
+If you revised your program based on an AI generated program or submitted an AI generated program without answering questions above, it is a case of Academic Dishonesty and measures will be taken following school or campus protocols. 
+Submission
+Submit your executable file, utility file, algorithm design file, and Lab4AI-toolForExtraCredits.docx(if filled) on Canvas. 

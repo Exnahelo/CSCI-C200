@@ -1,0 +1,41 @@
+CSCI-C200
+Lab 5 Extra Credit Questions
+Student Name: Daniel Howe
+Use an AI tool to create the program for you, compare the results and answer the following questions. Expand the blanks spaces wherever you need to. 
+	•	What tool did you use? (1’)
+
+I used Claude Sonnet 4 (run inside VS Code) to generate an AI version of the program based on my HoweLab5.py header and stated requirements.
+
+	•	After the first run, compare your program with the generated program. 
+	•	What are the differences between your program and the AI generated program? (3’)
+You must submit your own program to get extra credits here. 
+
+
+	•	Percent vs. ratio handling difference (design contract mismatch) The AI program calculates percentage = (spending / income) * 100 and passes that value into HoweLab5Util.evaluate_*(). My program treats spending / income as a ratio (e.g., 0.25) and multiplies by 100 only for display. This difference does not necessarily violate the rubric, but it represents a different internal design choice and could lead to inconsistent classifications if the evaluator logic assumes a ratio.
+	•	Utility output style difference The AI utility returns longer advisory sentences (“Excellent… Warning… Critical…”). My program design uses short categorical outputs such as "Low", "Typical", or "High". Both approaches produce complete-sentence output when displayed, but they reflect different design decisions.
+	•	Category/menu difference The AI menu includes Housing, Food, Transportation, Entertainment, and Other. My program uses Housing, Food, Transportation, Entertainment, Savings, and an Exit option. Both satisfy the requirement to choose from a list, but the category sets differ.
+	•	Validation policy difference My program prevents spending from exceeding income, while the AI version only rejects negative values. This stricter validation reflects my design choice rather than a clearly stated rubric requirement.
+	•	Termination behavior difference Both programs limit invalid input attempts to five. The AI version returns None and exits its loop, while my program explicitly terminates with a clear message after the fifth invalid attempt. Both approaches satisfy the requirement but differ in implementation style.
+
+
+
+	•	Did the AI generated program meet the requirements? If no, what requirements were not met? (3’)
+
+Yes, it generally meets the rubric requirements. The program accepts value input, validates inputs, limits attempts, provides a choice from a list, uses utility functions, and produces complete-sentence output. However, its internal structure and behavior differ from my design decisions, particularly in percentage handling, category definitions, and validation strictness.
+
+	•	If both meet the requirements, which program is better (from readability and efficiency point of view)? (3’)
+
+Both programs appear to satisfy the core requirements. In my opinion, my program is more readable and maintainable because it follows a consistent internal structure for validation, routing, evaluation, and output. The AI version is functional but uses different conventions and messaging styles. In terms of efficiency, both programs are essentially constant-time and show no meaningful performance difference.
+
+	•	If you revised your AI prompt(s) to refine the program, provide your revised prompt and a summary of each outcome. (5’)
+
+I did not revise the prompt. I generated one AI version for comparison only.
+
+	•	If you need to revise your program based on AI generated program, what revision(s) did you make? (5’)
+To get extra credits here, you must submit the first version and revised version of your program, and the AI generated version. 
+
+I made no revisions based on the AI-generated program. I retained my original design because it already satisfied the rubric and aligned with my intended structure.
+		
+Note
+If you revised your program based on an AI generated program or submitted an AI generated program without answering questions above, it is a case of Academic Dishonesty and measures will be taken following school or campus protocols. 
+

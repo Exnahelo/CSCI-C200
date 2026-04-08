@@ -1,0 +1,211 @@
+Project Name: HoweLab4.py
+Purpose: Help a user categorize a spending amount and receive a quick evaluation based on a selected budget category.
+Project Description: This program helps users evaluate how a specific category of monthly spending compares to recommended budgeting guidelines by calculating the percent of income spent and classifying it as Low, Typical, or High.
+File Created Date: 2026-02-09
+Author: Daniel Howe
+Version: 1.3
+Scope
+Includes: monthly income input, category spending input, input validation (empty/numeric/range), dictionary-based menu display + validation, conditional routing, category evaluation via utility functions, formatted output, optional run-again loop.
+Excludes: saving to files/DB, external APIs/live benchmarks, multi-month tracking, charts, debt payoff simulations.
+
+Assumptions
+	•	Percent-of-income thresholds are generalized budgeting guidelines, not personalized financial advice.
+	•	Threshold values are fixed at design time and do not adapt to user demographics or location.
+	•	The program evaluates one budget category per run.
+	•	All monetary values are assumed to be in the same currency.
+
+Core Flow Diagram (default layout)
+Top → Bottom flow
+[ Start ]
+   ↓
+[ Inputs: Income → Category Choice → Category Spending ]
+   ↓
+[ Validate Inputs (see Pre-Coding Checklist) ]
+   ↓
+[ Compute % of Income → Route to Evaluator ]
+   ↓
+[ Display Result ]
+   ↓
+[ End / Run Again ]
+
+MENU_OPTIONS Constant (dictionary)
+Single source of truth for:
+	•	printing the menu
+	•	validating the choice
+	•	labeling the selected category in output
+Example structure (conceptual):
+	•	1 → Housing
+	•	2 → Food
+	•	3 → Transportation
+	•	4 → Entertainment
+	•	5 → Savings
+	•	6 → Exit
+
+Algorithm Design (rubric-friendly, indented structure)
+Problem Description
+The program prompts the user to enter a monthly income value and a monthly spending amount for a selected budget category. The program validates both numeric inputs (not empty and numeric; income must be greater than 0; spending must be non-negative). The program displays a category menu stored in a constant dictionary and validates the user’s selection by checking membership in the dictionary keys. The program computes the spending as a percent of income, calls a category-specific evaluator function in a utility file to classify the percent as Low/Typical/High based on predefined thresholds, displays the result, and exits or repeats.
+Executable File Design: HoweLab4.py
+Code Annotation & Notation Conventions
+To ensure the completed code is readable and understandable to any reviewer or future developer, the following annotation conventions must be followed during implementation:
+	•	Variables: When variables are first introduced, include a short inline comment explaining their purpose, especially for booleans and control variables.
+	•	Example intent: user input values, menu selections, loop control flags.
+	•	Booleans: Always include a comment explaining what a True or False value represents.
+	•	Control Flow (if, elif, loops): Include brief comments explaining the decision being made or the purpose of the branch, not the Python syntax.
+	•	Functions: Each function must include a concise docstring describing:
+	•	What the function does
+	•	What input it expects
+	•	What it returns
+	•	Section Blocks: Use short section comments in the main program to separate major phases (input collection, validation, routing, output).
+These annotations are intended to clarify intent and responsibility, not to explain Python language mechanics.
+File Header
+The executable file includes a standard file header with metadata (project name, purpose, author, date, and version).
+Variable Initialization Block
+	•	constants: MENU_OPTIONS, category threshold constants;  keep them inside utilities
+	•	variables: monthly_income, spending_amount, choice, percent_of_income, evaluation_result, run_again
+Main Execution Steps
+	•	Display program header/purpose
+	•	Initialize constants and variables
+	•	Prompt for monthly income
+	•	If income invalid → print error message → exit program
+	•	Display category menu using MENU_OPTIONS
+	•	Prompt for category choice
+	•	If choice invalid → print error message → exit program
+	•	If Exit → end
+	•	Prompt for spending amount for the selected category
+	•	If spending invalid → print error message → exit program
+	•	Compute percent-of-income
+	•	Route with if/elif to the correct utility evaluator (pass the percent)
+	•	Display formatted output (category, spending, income, percent, evaluation)
+	•	Optional: ask run again (accept "y" or "yes" case-insensitive); loop or end
+
+Utility File Blueprint: HoweUtil.py
+Purpose
+Contains one evaluator function per category (same nature), grouped in one module.
+Function Contract (locked for implementation)
+	•	Input: percent_of_income (computed in main)
+	•	Processing: compare percent to thresholds defined as constants in HoweUtil.py (module-level) and referenced by each evaluator
+	•	Output: return evaluation label only: "Low" | "Typical" | "High"
+	•	No input/print inside utility functions
+Functions
+	•	evaluate_housing(percent)
+	•	evaluate_food(percent)
+	•	evaluate_transportation(percent)
+	•	evaluate_entertainment(percent)
+	•	evaluate_savings(percent)
+(Exit is handled in main; no function required.)
+
+Utility Function Flow Diagram (reusable per category)
+[ Start: evaluator called from main ]
+        ↓
+[ Inputs: percent_of_income ]
+        ↓
+[ Processing / Logic: compare percent to category thresholds ]
+        ↓
+[ Output: return Low / Typical / High ]
+        ↓
+[ End: return to main ]
+Optional internal decision layout (3-level classification):
+[ Decision: Below low cutoff? ]
+   /        \
+[ Yes ]     [ No ]
+  ↓          ↓
+[ Return Low ]  [ Decision: Above high cutoff? ]
+                   /        \
+                [ Yes ]    [ No ]
+                  ↓         ↓
+            [ Return High ] [ Return Typical ]
+
+Extra Credit Workflow (Prep)
+Create a simple versioning plan so you can earn the extra credit without scrambling later:
+	•	mine_v1/ → your first working version of HoweLab4.py + HoweUtil.py
+	•	mine_v2/ → revised version (only if you make changes after comparison)
+	•	ai_version/ → AI-generated version you compare against
+	•	Keep your algorithm design and your filled extra credit document alongside these folders.
+When you run an AI tool:
+	•	Paste only your Problem Description + requirements
+	•	Save the AI output as a separate file (do not overwrite your own work)
+	•	Use the questions in the extra credit document to compare readability, validation, and file separation.
+
+Pre-Coding Checklist (Locked for Income-Based Version)
+1) Locked Design Decisions
+The following rules are fixed and must be followed during implementation.
+A. Validation Rules (explicit)
+Monthly income input
+	•	Cannot be empty
+	•	Must be numeric
+	•	Must be > 0
+	•	Invalid → print error + exit
+Category spending input
+	•	Cannot be empty
+	•	Must be numeric
+	•	Must be ≥ 0
+	•	Policy (locked): Reject spending > income → print error + exit
+Menu choice
+	•	Must be an integer
+	•	Must be a key in MENU_OPTIONS
+	•	Invalid → print error + exit
+B. Categories + Evaluation Levels
+Categories
+	•	Housing, Food, Transportation, Entertainment, Savings, Exit
+Evaluation labels
+	•	Low, Typical, High
+
+2) Define Threshold Logic (Percent-of-Income)
+Interpretation note: percent_of_income is a decimal fraction (e.g., 0.25 = 25%).
+Housing thresholds
+	•	Low: ≤ 0.25
+	•	Typical: > 0.25 and ≤ 0.35
+	•	High: > 0.35
+Food thresholds
+	•	Low: ≤ 0.09
+	•	Typical: > 0.09 and ≤ 0.15
+	•	High: > 0.15
+Transportation thresholds
+	•	Low: ≤ 0.08
+	•	Typical: > 0.08 and ≤ 0.14
+	•	High: > 0.14
+Entertainment thresholds
+	•	Low: ≤ 0.04
+	•	Typical: > 0.04 and ≤ 0.09
+	•	High: > 0.09
+Savings thresholds
+	•	Low: ≤ 0.10
+	•	Typical: > 0.10 and ≤ 0.20
+	•	High: > 0.20
+Interpretation note: For Savings, High indicates a strong savings rate (positive outcome), not overspending.
+Exit
+	•	Exit is a valid menu choice handled in the main program (no utility evaluator).
+(Design note: any percent above the Typical upper bound is classified as High.)
+
+3) Decide Utility Function Return Type (Locked)
+Return just the level
+	•	"Low" | "Typical" | "High"
+
+4) Finalize MENU_OPTIONS (Single Source of Truth)
+Confirm:
+	•	Keys are integers
+	•	Values are labels
+	•	Exit included
+	•	You will:
+	•	Print the menu from it
+	•	Validate choice using its keys
+	•	Display category name using its value
+One-sentence explanation to include in design:
+“The dictionary is the single source of truth for menu display, validation, and output labeling.”
+
+5) Confirm File Responsibilities (Rubric-Critical)
+HoweLab4.py
+	•	Input (income, choice, spending)
+	•	Validation (income/spending/choice)
+	•	Menu display (from dict)
+	•	Percent-of-income computation
+	•	Routing (if/elif)
+	•	Printing output
+	•	Loop/exit
+HoweUtil.py
+	•	No input
+	•	No printing
+	•	No menu logic
+	•	Only evaluation logic (percent → Low/Typical/High)
+	•	One function per category
+

@@ -1,0 +1,58 @@
+CSCI-C 200
+Lab 6 – String Processing
+
+Due Date: February 25, Wednesday, 11:59pm
+Accept Until: March 4, Wednesday, 11:59pm (with late penalties)
+Purpose
+Through this lab, you will practice how to use a Python program to extra information from a string with a particular pattern, which is common in software applications that work with a lot of text values. 
+Learning Outcome
+Upon successful completion of this lab, you will be able to
+	•	Understand string index values
+	•	Understand string slicing
+	•	Create functions that return values
+Description
+Think of a situation where a section of a string (a sub string) has a particular meaning, or is often extracted to identify something. Below are some examples:
+	•	In a full name, the part after space is the last name.
+	•	In a phone number such as (317)123-4567,  the three digits after “(“ is an area code. 
+	•	In a long version of a zip code, such as 46202-4218, the last part sometimes needs to be removed. 
+	•	The last four digits of a social security number are sometimes extracted to identify a person. 
+	•	In IU Indianapolis, a room label such as SL155 can be split into a building number and a room number. 
+Determine the type of string you want to process, then create a Python program that asks a user to enter a value, split the string, and output a sentence stating original input and the split result. If the string can be split into two parts, and each part means something, the output should include both parts, for instance, a full name can be split into a first name and a last name, the output sentence will be “In the name ‘John Smith’ , ‘John’ is the first name and ‘Smith’ is the last name”. If the task is to remove a part of the string, the output can include only the remaining part, for instance, “The short version of the zip code 46202-4218 is 46202”. 
+User will be asked if they want to try again, for unlimited times. Design a way to end the program based on user input, e.g. enter “yes” to continue and enter “no” to end. When you ask the user to enter a string value, be sure to tell user what the format should be, e.g. if asking user to enter a phone number, specify the phone number format. There is no need to validate the format. You can assume the user entered the value in the right format. String processing should be defined as a function that returns a value, e.g. to find the first name of a string, the function can be defined as findFirstName(name) where name is the user entry, and the return value is the first name. 
+In this lab, you'll learn or continue to learn how AI tools like ChatGPT can support your programming tasks, with the aim of improving the quality of your work. If you don’t have a preferred AI tool, you can use Microsoft Copilot offered to all IU students (sign in to office.iu.edu, click on Apps and find Copilot). See rubric below for details. 
+Tasks
+	•	Decide on what type of string you want to process. Think how to process the string. 
+	•	Once you are done with step 1, imagine what will happen when the program runs. 
+	•	Use the sample algorithm design file as a guide to layout the main structure of your program, e.g. first block will be a file header, second block will be creating variables, third block will define a function, … 
+	•	Refine each block to include details, e.g. what should be in the file header block. 
+	•	Finalize your algorithm design, e.g. check grammar, levels of indentation, etc. 
+	•	Start coding – following your design, and gradually add and test each block or your function. Revise the design if necessary. 
+Rubric
+	•	String values are entered by user.  (10’)
+	•	When asking for a user entry, clearly specify the format of the user entry. (10’)
+	•	User can enter string values for unlimited number of times. (10’)
+	•	Have a way to end the program based on a user entry. (10’)
+	•	String processing is done through a function that returns a value. For this lab, you cannot use the split() function. If you do, your assignment will be considered ungradable (see Canvas Home page for policy on ungradable assignments. (10’)
+	•	Program runs successfully, and string process result is correct. (10’)
+	•	Program output includes both input and the split result. (10’)
+	•	Professional coding style 
+	•	file header (2’)
+	•	variable initialization block (2’)
+	•	naming conventions (2’)
+	•	code blocks (2’)
+	•	adequate comments (2’)
+	•	Use an AI tool to create or revise a part or entire program for you, compare the results and answer the following questions using the attached WORD document. 
+	•	What tool did you use? (1’)
+	•	After the first run, compare your program (or code segment) with the AI generated version. 
+	•	What are the differences between your version and the AI Version? (5’)
+Paste both your version and the AI version into the WORD document and answer this question. 
+	•	Which version is better (from readability and efficiency point of view) and why? (5’)
+	•	If you revised your AI prompt(s) to refine the program, provide your revised prompt and a summary of each outcome. (5’)
+	•	If you need to revise your program based on AI result, what revision(s) did you make? (4’)
+Note
+If you revised your program based on an AI generated result or submitted an AI generated program
+without answering questions above, it is a case of Academic Dishonesty and measures will be taken
+following school or campus protocols.
+
+Submission
+Submit your program file and Lab6AI on Canvas. 

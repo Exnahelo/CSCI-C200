@@ -1,0 +1,145 @@
+Investment Calculator Blueprint (Lab 2–Compliant: Growth + Dividends + Contributions)
+0) Project goal
+Write a simple Python program that simulates an investment over time and prints a clear, sentence-style summary of the results: ending value, total contributions, total dividends generated, net gain, and ROI%.
+
+1) File header block (REQUIRED at very top of the .py file)
+Include a multi-line comment header with:
+	•	File name: LastNameLab2.py
+	•	Purpose: one sentence (what the program does)
+	•	Problem description: 1–2 sentences (what is being simulated and reported)
+	•	First created date: (your date)
+	•	Author: (your name)
+	•	Version: 1.0 (or similar)
+
+2) Model assumptions (immediately after header)
+Pick one model and stick to it. Use these exact assumptions and print them later:
+	•	Time step: Monthly
+	•	Compounding: monthly growth using annual_growth_rate / months_per_year
+	•	Dividends: paid monthly using annual_dividend_yield / months_per_year based on current balance
+	•	Contribution timing: added at start of each month
+	•	DRIP rule: if enabled, dividends reinvest immediately; otherwise tracked as cash dividends
+
+3) Constants and input variables (single “initialization block” near top)
+Create a clear block where everything is defined/initialized (even if user input changes them). Important: include one single-line comment per variable right next to it in code.
+3A) Constants (avoid magic numbers in expressions/prints)
+	•	months_per_year (int) = 12 — used everywhere instead of writing 12
+	•	percent_scale (float) = 100.0 — used instead of writing 100
+3B) Required inputs (types)
+	•	investor_name (str) — label for outputs
+	•	initial_investment (float) — starting dollars
+	•	monthly_contribution (float) — dollars per month (allow 0)
+	•	annual_growth_rate (float) — e.g., 0.06
+	•	annual_dividend_yield (float) — e.g., 0.03
+	•	years (int) — whole number of years
+3C) Optional toggles
+	•	reinvest_dividends (bool) — DRIP on/off (If your instructor wants an additional switch like growth-before-dividend, only include if you will actually implement it consistently.)
+
+4) Input validation rules (before simulation)
+Validate after reading input (or inside get_user_inputs()):
+	•	initial_investment >= 0
+	•	monthly_contribution >= 0
+	•	years > 0
+	•	0 <= annual_growth_rate <= 1 (or allow >1 but print a warning)
+	•	0 <= annual_dividend_yield <= 1
+If invalid: print an error message and exit (or reprompt—either is fine, but be consistent).
+
+5) Derived values (computed once, stored in variables)
+Compute these once after validation:
+	•	months (int) = years * months_per_year
+	•	monthly_growth_rate (float) = annual_growth_rate / months_per_year
+	•	monthly_dividend_rate (float) = annual_dividend_yield / months_per_year
+
+6) State variables (initialized once before loop)
+Track during simulation:
+	•	balance (float) — current account value
+	•	total_contributions (float) — total money added (decide whether this includes initial)
+	•	total_dividends (float) — total dividends generated (always accumulates)
+	•	cash_dividends (float) — only meaningful if NOT reinvesting (still can exist always)
+	•	Optional reporting:
+	•	year_end_balances (list[float]) — end-of-year balances
+Initialization rule: be explicit and consistent:
+	•	Option A (simple):
+	•	balance = initial_investment
+	•	total_contributions = initial_investment
+	•	(Or track initial_investment separately; just don’t double-count.)
+
+7) Core algorithm (monthly loop)
+Loop exactly months times.
+For each month:
+	•	Add contribution at start
+	•	balance += monthly_contribution
+	•	total_contributions += monthly_contribution
+	•	Apply growth
+	•	balance *= (1 + monthly_growth_rate)
+	•	Compute dividend
+	•	dividend = balance * monthly_dividend_rate
+	•	total_dividends += dividend
+	•	Handle dividend
+	•	If reinvest_dividends:
+	•	balance += dividend
+	•	Else:
+	•	cash_dividends += dividend
+	•	Optional year-end tracking
+	•	If month % months_per_year == 0:
+	•	append balance to year_end_balances
+
+8) Results calculations (store values in variables before printing)
+Compute summary variables after loop:
+	•	ending_value (float)
+	•	If reinvesting: ending_value = balance
+	•	If not reinvesting: ending_value = balance (still), and also use cash_dividends
+	•	net_gain (float)
+	•	If reinvesting: net_gain = ending_value - total_contributions
+	•	If not: net_gain = (ending_value + cash_dividends) - total_contributions
+	•	roi_pct (float)
+	•	If total_contributions > 0:
+	•	roi_pct = (net_gain / total_contributions) * percent_scale
+	•	Else:
+	•	roi_pct = 0.0 (and print a note)
+
+9) Output rules (rubric-proof)
+9A) “Complete sentence” requirement
+Print at least one full sentence that includes inputs + results, e.g.:
+	•	investor name
+	•	years
+	•	initial and monthly contribution
+	•	ending value
+	•	ROI%
+9B) “Print uses variables only”
+Do not put math expressions inside print(...) for numeric values.
+	•	Compute first → store in a variable → print that variable.
+9C) Print the assumptions
+Print a short “Assumptions:” section so graders see your model is intentional.
+9D) Currency formatting
+Use a helper like format_currency(amount) so dollar amounts print consistently.
+
+10) Function layout (clean and grade-friendly)
+Use functions to keep main() readable:
+	•	get_user_inputs() -> dict Reads inputs, validates, returns params.
+	•	simulate_investment(params: dict) -> dict Runs loop, returns results dict.
+	•	format_currency(x: float) -> str Returns formatted string like $1,234.56.
+	•	print_summary(results: dict, params: dict) -> None Computes final display strings and prints (using variables only).
+	•	main() -> None Calls the above; guarded by:
+	•	if __name__ == "__main__": main()
+
+11) Test cases (in comments; run them yourself)
+Include at least these sanity checks:
+	•	Zero rates sanity
+	•	growth = 0, yield = 0, contribution = 0 → ending = initial
+	•	Contributions only
+	•	growth = 0, yield = 0 → ending = initial + monthly_contribution * months
+	•	Growth only
+	•	yield = 0 → compare to compound interest expectation
+	•	Dividends only with DRIP
+	•	growth = 0, yield > 0, DRIP on → balance increases via dividends
+
+12) Submission checklist (don’t lose free points)
+	•	Python file name: LastNameLab2.py
+	•	Self-evaluation file renamed: LastNameSelfEvaluationLab2.xlsx
+	•	Self-eval: “Student Name” filled
+	•	Self-eval: all “Your Evaluation Points” cells filled (and explanations if not full credit)
+	•	Program output includes:
+	•	at least one complete-sentence summary line
+	•	assumptions printed
+	•	all printed numeric values come from variables (not expressions)
+

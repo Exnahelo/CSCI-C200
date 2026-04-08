@@ -1,0 +1,72 @@
+Algorithm Design HoweLab6
+Problem Description
+This program parses a user-entered finance symbol in the format TICKER-EXCHANGE (example: AAPL-NASDAQ). It extracts and displays:
+	•	Ticker (left side of the separator)
+	•	Exchange (right side of the separator)
+The program repeats for unlimited attempts until the user chooses to quit. String processing is performed in a function that returns values, and the program does not use split() anywhere.
+
+Main Algorithm: HoweLab6.py
+1. Program Start
+	•	Print program header and purpose.
+	•	Print short instructions explaining the required input format:
+	•	“Enter a symbol as TICKER-EXCHANGE (example: AAPL-NASDAQ).”
+	•	Mention quit option (example: user can type q to quit).
+
+2. Constant and Variable Initialization
+Initialize the following:
+	•	SEPARATOR = "-"
+	•	run_again = True
+	•	symbol = ""
+	•	ticker = ""
+	•	exchange = ""
+
+3. Main Control Loop
+WHILE run_again is True:
+A. Symbol Input Stage
+	•	Prompt user: “Enter symbol (TICKER-EXCHANGE) or Q to quit:”
+	•	Store input in symbol.
+	•	If symbol (after strip() and lower()) is in quit keywords ("q", "quit", "exit"):
+	•	Set run_again = False
+	•	Skip to Program End.
+B. String Processing Stage (Function Call)
+	•	Call parseSymbol(symbol, SEPARATOR)
+	•	Store returned values:
+	•	ticker, exchange = parseSymbol(symbol, SEPARATOR)
+C. Output Stage
+	•	Print a complete sentence including:
+	•	Original symbol
+	•	Extracted ticker
+	•	Extracted exchange Example output format (conceptual):
+	•	“You entered AAPL-NASDAQ. Ticker: AAPL. Exchange: NASDAQ.”
+D. Repeat Stage
+	•	Prompt: “Try another symbol? (Y/N):”
+	•	If user enters "y" or "yes" (after strip/lower): keep run_again = True
+	•	Else: set run_again = False
+
+4. Program End
+	•	Print goodbye message.
+	•	End program.
+
+String Processing Function Design (Required)
+Function: parseSymbol(symbol, separator)
+Purpose Parse the input string in the form TICKER-EXCHANGE using indexing and slicing (no split()).
+Inputs
+	•	symbol (string): user-entered symbol
+	•	separator (string): expected separator character (e.g., "-")
+Outputs (return value)
+	•	Return two strings: (ticker, exchange)
+Internal Steps
+	•	Find the separator position:
+	•	sep_index = symbol.find(separator)
+	•	Slice into two parts using the separator index:
+	•	ticker = symbol[:sep_index]
+	•	exchange = symbol[sep_index + 1:]
+	•	Clean up whitespace (optional but safe):
+	•	ticker = ticker.strip()
+	•	exchange = exchange.strip()
+	•	Return (ticker, exchange)
+Rules / Constraints
+	•	split() is not allowed anywhere.
+	•	“First separator wins” if multiple separators appear (because find() returns the first match).
+Assumptions (keep short)
+	•	Assume the user enters the symbol in the correct format (validation not required unless your instructor says otherwise).

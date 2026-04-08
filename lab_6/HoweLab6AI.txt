@@ -1,0 +1,144 @@
+CSCI-C200
+Lab 6 AI Questions
+Student Name: Daniel Howe
+Use an AI tool to create or revise a part or entire program for you, compare the results and answer the following questions using the attached WORD document. 
+	•	What tool did you use? (1’)
+I used Grok Code Fast 1 via VS Code.
+	•	After the first run, compare your program (or code segment) with the AI generated version. 
+	•	What are the differences between your version and the AI Version? (5’)
+Below are both versions and then the differences:  Grok: def main():
+    continue_program = True
+    while continue_program:
+        # Ask the user to enter a stock symbol
+        stock_symbol = input(
+            "Enter a stock symbol in the format TICKER-EXCHANGE (e.g., AAPL-NASDAQ): "
+        )
+
+        # Find the position of the hyphen
+        hyphen_index = stock_symbol.find("-")
+
+        # Extract the ticker and exchange using slicing
+        ticker = stock_symbol[:hyphen_index]
+        exchange = stock_symbol[hyphen_index + 1 :]
+
+        # Print the formatted sentence
+        print(f"The ticker is {ticker} and the exchange is {exchange}.")
+
+        # Ask if the user wants to continue
+        user_choice = input(
+            "Do you want to enter another stock symbol? (y/n): "
+        ).lower()
+        if user_choice != "y":
+            continue_program = False
+
+
+if __name__ == "__main__":
+    main()  -----  My code:  """
+Project Name: HoweLab6.py
+Purpose: Parse a finance symbol in the format TICKER-EXCHANGE using required string indexing
+         and slicing (without split()), returning the ticker and exchange in sentence-style output.
+Description: Includes a user input loop for entering symbols in the required format, a run-again
+             prompt for unlimited attempts, a string-processing function that locates the separator
+             index and slices the input into ticker and exchange parts, and complete-sentence output
+             showing the original input and extracted components.
+File Created Date: 2026-02-23
+Author: Daniel Howe
+Version: 1.0
+"""
+
+# ============================================================
+# ---- Constants ----
+# ============================================================
+SEPARATOR = "-"
+
+
+# ============================================================
+# ---- String Processing Function (required) ----
+# ============================================================
+def parseSymbol(symbol: str) -> tuple[str, str]:
+    """
+    Parse a symbol in the form TICKER-EXCHANGE into (ticker, exchange) using indexing/slicing.
+    Rules:
+      - Find the first '-' (first separator wins).
+      - Left side is ticker, right side is exchange.
+      - Strip whitespace around each part; preserve original letter case.
+    Note: No validation required by blueprint; if '-' is missing, exchange will be "".
+    """
+    dash_index = symbol.find(SEPARATOR)
+
+    # If no dash is found, keep ticker as the whole string and exchange as empty.
+    if dash_index == -1:
+        ticker = symbol.strip()
+        exchange = ""
+        return ticker, exchange
+
+    ticker = symbol[:dash_index].strip()
+    exchange = symbol[dash_index + 1 :].strip()
+    return ticker, exchange
+
+
+# ============================================================
+# ---- Main Program ----
+# ============================================================
+def main() -> None:
+    """Main loop: input → parseSymbol() → output → run-again decision."""
+    print(
+        "Welcome to Lab 6: Enter a symbol like TICKER-EXCHANGE and I’ll parse it into ticker + exchange."
+    )
+
+    continue_choice = "yes"  # loop control default
+
+    while continue_choice.strip().lower() != "no":
+        symbol = input("Enter a symbol in format TICKER-EXCHANGE (example: AAPL-NASDAQ): ").strip()
+
+        ticker, exchange = parseSymbol(symbol)
+
+        print(
+            f"In the symbol '{symbol}', '{ticker}' is the ticker and '{exchange}' is the exchange."
+        )
+
+        continue_choice = input("Try another symbol? Type yes to continue or no to quit: ")
+
+    print("Done. Goodbye.")
+
+
+if __name__ == "__main__":
+    main()
+
+-----
+
+Differences I observed:
+	•	Program structure
+	•	AI version keeps everything inside main() and does the parsing inline.
+	•	My version separates parsing into a dedicated function parseSymbol() and keeps main() focused on input/output flow.
+	•	Validation / edge-case handling
+	•	AI version does not check if "-" exists. If the user enters something without a hyphen, find("-") returns -1, which causes slicing behavior that can produce incorrect results (ticker becomes “everything except last char,” exchange becomes the whole string).
+	•	My version explicitly handles the missing-hyphen case by returning (symbol, ""), which is predictable and safer.
+	•	Whitespace handling
+	•	AI version does not strip whitespace from the ticker/exchange parts, so inputs like " AAPL - NASDAQ " will include spaces in output.
+	•	My version uses .strip() around the parts so the output is clean.
+	•	Loop control / user prompts
+	•	AI version uses a boolean flag (continue_program) and continues only if the user enters "y".
+	•	My version uses "yes"/"no" logic and keeps prompting until the user types "no" (case-insensitive and whitespace-tolerant).
+	•	Readability and documentation
+	•	AI version is short with minimal documentation.
+	•	My version includes a file header, section dividers, docstrings, type hints, and clearer intent (especially around the required “indexing/slicing without split()” rule).
+
+	•	Which version is better (from readability and efficiency point of view) and why? (5’)
+Readability: My version is better.
+	•	The parsing logic is isolated in parseSymbol(), so the “what” (parsing) is separated from the “when/how” (user interaction loop).
+	•	The constant SEPARATOR makes the delimiter obvious and easy to change.
+	•	Docstrings + type hints make it easier to understand and grade.
+Efficiency: They are effectively the same for this lab.
+	•	Both versions do a single .find() and a couple slices per input, so runtime is trivial either way.
+	•	If anything, my version adds a tiny overhead of a function call, but that overhead is irrelevant at this scale.
+Bottom line: My version is better overall because it’s clearer, more modular, and handles the missing-hyphen case safely.
+	•	If you revised your AI prompt(s) to refine the program, provide your revised prompt and a summary of each outcome. (5’)
+No revision
+	•	If you need to revise your program based on AI result, what revision(s) did you make? (4’)
+No revision
+Note
+If you revised your program based on an AI generated result or submitted an AI generated program
+without answering questions above, it is a case of Academic Dishonesty and measures will be taken
+following school or campus protocols.
+

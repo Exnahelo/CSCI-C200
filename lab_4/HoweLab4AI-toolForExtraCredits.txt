@@ -1,0 +1,45 @@
+CSCI-C200
+Lab 4 Extra Credit Questions
+Student Name: Daniel Howe
+Use an AI tool to create the program for you, compare the results and answer the following questions. Expand the blanks spaces wherever you need to. 
+Method / What I did
+I used an AI coding tool to generate a Lab 4 program and then compared it to my own completed solution. After asking the TA for clarification on what content should be provided to the AI, I was told I could use “anything” and that the goal was to see AI in action. Because of that, I tried multiple prompt styles to see how the AI output changes depending on the information provided. Run 1 used my blueprint/design (detailed prompt). Run 2 used only file headers (minimal prompt). Run 3 used the assignment description + rubric (requirements-only prompt). I used Run 1 as the “first run” comparison required by the extra credit questions and treated Runs 2–3 as revised prompts/outcomes.
+
+a) What tool did you use? (1’)
+Tool used: Codex (AI code generation tool).
+
+b) After the first run, compare your program with the generated program.
+b.a) What are the differences between your program and the AI generated program? (3’)
+Differences (Run 1: blueprint-based Codex vs my program):
+	•	Error handling / exiting
+	•	Mine: Uses a dedicated failure handler (e.g., _fail_and_exit()), with explicit exit codes (sys.exit(1) for invalid input, sys.exit(0) for user exit).
+	•	AI (Codex): Typically prints an error message and returns from main() (ends the program without explicit exit codes).
+	•	Validation structure
+	•	Mine: Separate, named validators (e.g., get_valid_income, get_valid_choice, get_valid_spending) to keep main() clean and rubric-obvious.
+	•	AI (Codex): Generic parsers (e.g., parse_float, parse_int) and keeps more validation logic inside main() rather than dedicated “get valid ___” functions.
+	•	Routing robustness / fallback behavior
+	•	Mine: Defensive handling for unexpected states (explicit fallback path / exit), so you never get a “mystery output.”
+	•	AI (Codex): In some cases returns None or an unclear value on an unexpected path, which can lead to output like Evaluation: None in a weird edge case.
+	•	Utility module style
+	•	Mine: Explicit if/elif threshold checks inside each evaluator (more verbose but very direct).
+	•	AI (Codex): Often uses a shared helper (e.g., _evaluate_level()) to reduce repeated code (more DRY, slightly more abstract).
+
+b.b) Did the AI generated program meet the requirements? If no, what requirements were not met? (3’)
+Run 1 result: Yes, the AI-generated program met the core Lab 4 requirements (menu/choice handling, numeric input + validation, use of functions/utilities, routing via conditionals, correct-style output formatting). Minor weakness: In an edge case, the AI routing function could return a fallback like None instead of handling an unexpected state explicitly, which could produce unclear output. This is not a rubric-breaker in normal use, but it’s less defensive.
+
+b.c) If both meet the requirements, which program is better (from readability and efficiency point of view)? (3’)
+	•	Readability (for grading): My program is clearer because validation is separated into named functions and routing is explicit. It’s easier to trace and easier for a grader to match to rubric items.
+	•	Efficiency (runtime): Equivalent. Both are simple constant-time checks and basic arithmetic; performance differences are irrelevant at this scale.
+	•	Maintainability: Slight edge to the AI utility module if it uses a shared helper to reduce repetition, but my version is more explicit and “rubric-safe.”
+
+c) If you revised your AI prompt(s) to refine the program, provide your revised prompt and a summary of each outcome. (5’)
+Revised Prompt / Run 2 (minimal prompt: file headers only)
+	•	What I gave the AI: Only file headers / docstrings (purpose + function names), without detailed requirements or algorithm thresholds.
+	•	Outcome: The AI generated a complete program, but filled in many design choices (menu structure, thresholds, labels) on its own. It was functional but less aligned with my intended logic because the prompt lacked constraints.
+Revised Prompt / Run 3 (requirements-only: assignment description + rubric)
+	•	What I gave the AI: Assignment description + rubric requirements, without my blueprint.
+	•	Outcome: The AI produced a simpler analyzer that met generic rubric items, but it did not reliably replicate my specific model choices (e.g., percent-of-income logic vs raw dollar thresholds) unless explicitly stated. This showed output quality depends heavily on prompt specificity.
+
+d) If you need to revise your program based on AI generated program, what revision(s) did you make? (5’)
+I did not revise my program based on the AI output because my implementation already met the rubric and followed my own algorithm design. I used the AI-generated version strictly for comparison.
+

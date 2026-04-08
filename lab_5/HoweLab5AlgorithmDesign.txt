@@ -1,0 +1,171 @@
+Algorithm Design
+HoweLab5
+
+Problem Description
+This program evaluates a user’s monthly spending in a selected budget category as a percentage of monthly income. It accepts three primary inputs:
+	•	Monthly income
+	•	Category menu choice
+	•	Spending amount for the selected category
+All inputs are validated using loop-controlled validation with a maximum of five attempts. After each invalid attempt, the program displays an error message and the number of remaining attempts. If five invalid attempts occur, the program terminates with a clear error message. Users may also terminate early using quit keywords.
+If valid inputs are provided, the program calculates the percent of income spent (ratio form), routes the result to a category-specific evaluator function in a separate utility file, and classifies the result as Low, Typical, or High.
+The program outputs a complete sentence summarizing the result, followed by a formatted report. The user may then choose to run the program again.
+
+Main Algorithm: HoweLab5.py
+1. Program Start
+	•	Print program header and purpose.
+
+2. Variable Initialization
+Initialize the following variables:
+
+monthly_income = 0.0
+choice = 0
+category_label = ""
+spending_amount = 0.0
+percent_of_income = 0.0
+evaluation_result = ""
+run_again = True
+
+3. Main Control Loop
+WHILE run_again is True:
+
+A. Income Input Stage
+	•	Call get_valid_income()
+Inside the function:
+	•	Set attempts = 0
+	•	WHILE attempts < MAX_ATTEMPTS:
+	•	Prompt user for income
+	•	If input is quit keyword → terminate program successfully
+	•	Validate:
+	•	Not empty
+	•	Numeric
+	•	Greater than 0
+	•	If invalid:
+	•	Increment attempts
+	•	If attempts == MAX_ATTEMPTS → terminate program (error)
+	•	Else → print error and attempts remaining
+	•	If valid → return income as float
+
+B. Menu Stage
+	•	Display category menu
+	•	Call get_valid_choice()
+Inside the function:
+	•	Set attempts = 0
+	•	WHILE attempts < MAX_ATTEMPTS:
+	•	Prompt user for menu choice
+	•	If input is quit keyword → terminate program successfully
+	•	Validate:
+	•	Not empty
+	•	Integer
+	•	In MENU_OPTIONS
+	•	If invalid:
+	•	Increment attempts
+	•	If attempts == MAX_ATTEMPTS → terminate program (error)
+	•	Else → print error and attempts remaining
+	•	If valid → return choice
+
+C. Exit Handling
+	•	If choice == EXIT_CHOICE:
+	•	Print goodbye
+	•	Terminate program successfully
+
+D. Spending Input Stage
+	•	Set category_label = MENU_OPTIONS[choice]
+	•	Call get_valid_spending(monthly_income, category_label)
+Inside the function:
+	•	Set attempts = 0
+	•	WHILE attempts < MAX_ATTEMPTS:
+	•	Prompt user for spending amount
+	•	If input is quit keyword → terminate program successfully
+	•	Validate:
+	•	Not empty
+	•	Numeric
+	•	≥ 0
+	•	≤ monthly_income (locked policy)
+	•	If invalid:
+	•	Increment attempts
+	•	If attempts == MAX_ATTEMPTS → terminate program (error)
+	•	Else → print error and attempts remaining
+	•	If valid → return spending as float
+
+E. Compute Stage
+	•	Compute:
+
+percent_of_income = spending_amount / monthly_income
+	•	Do NOT round before evaluation.
+
+F. Routing Stage
+Use if/elif structure:
+	•	If choice == 1 → call evaluate_housing(percent_of_income)
+	•	Elif choice == 2 → call evaluate_food(percent_of_income)
+	•	Elif choice == 3 → call evaluate_transportation(percent_of_income)
+	•	Elif choice == 4 → call evaluate_entertainment(percent_of_income)
+	•	Elif choice == 5 → call evaluate_savings(percent_of_income)
+	•	Else → terminate program (unexpected state)
+Store returned value in evaluation_result.
+
+G. Output Stage
+	•	Print complete sentence including:
+	•	Category label
+	•	Spending amount (currency format)
+	•	Monthly income (currency format)
+	•	Percent (formatted to two decimals)
+	•	Evaluation label
+	•	Print formatted result block:
+	•	Category
+	•	Monthly Income
+	•	Category Spend
+	•	Percent of Income
+	•	Evaluation
+
+H. Repeat Stage
+	•	Prompt: “Run again? (Y/N)”
+	•	If input in {"y", "yes"}:
+	•	run_again = True
+	•	Else:
+	•	run_again = False
+
+4. Program End
+	•	Print final goodbye message.
+	•	End program.
+
+Utility File: HoweLab5Util.py
+Utility Design Rules
+	•	Thresholds are defined as named constants.
+	•	No input() statements.
+	•	No print() statements.
+	•	Each evaluator returns ONLY:
+	•	"Low"
+	•	"Typical"
+	•	"High"
+	•	percent_of_income is passed as a ratio (e.g., 0.25 = 25%).
+
+Internal Helper Function
+
+_classify(percent_of_income, low_max, typical_max)
+Logic:
+	•	If percent_of_income ≤ low_max → return "Low"
+	•	Else if percent_of_income ≤ typical_max → return "Typical"
+	•	Else → return "High"
+
+Category Evaluators
+Housing
+	•	≤ 0.25 → Low
+	•	≤ 0.35 → Typical
+	•	Else → High
+Food
+	•	≤ 0.09 → Low
+	•	≤ 0.15 → Typical
+	•	Else → High
+Transportation
+	•	≤ 0.08 → Low
+	•	≤ 0.14 → Typical
+	•	Else → High
+Entertainment
+	•	≤ 0.04 → Low
+	•	≤ 0.09 → Typical
+	•	Else → High
+Savings
+	•	≤ 0.10 → Low
+	•	≤ 0.20 → Typical
+	•	Else → High (Note: High indicates strong savings, not overspending.)
+

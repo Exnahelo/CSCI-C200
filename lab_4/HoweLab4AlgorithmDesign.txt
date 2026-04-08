@@ -1,0 +1,79 @@
+Algorithm Design
+
+Problem Description
+This program evaluates a user’s monthly spending in a selected budget category as a percent of monthly income. It takes three inputs: monthly income, a menu category choice, and the spending amount for that category. It outputs a formatted result showing the percent-of-income and a classification of Low, Typical, or High based on predefined thresholds.
+
+Main Algorithm: HoweLab4.py
+	•	Print program header/purpose.
+	•	Initialize loop control variable:
+	•	run_again = True
+	•	WHILE run_again is True:
+	•	Prompt user for monthly_income.
+	•	Validate income:
+	•	if empty → error → exit program
+	•	if non-numeric → error → exit program
+	•	if <= 0 → error → exit program
+	•	Display menu using MENU_OPTIONS.
+	•	Prompt user for choice.
+	•	Validate choice:
+	•	if empty → error → exit program
+	•	if not integer → error → exit program
+	•	if not in MENU_OPTIONS.keys() → error → exit program
+	•	If choice == EXIT_CHOICE:
+	•	print goodbye
+	•	exit program (success)
+	•	Set category_label = MENU_OPTIONS[choice]
+	•	Prompt user for spending_amount for that category.
+	•	Validate spending:
+	•	if empty → error → exit program
+	•	if non-numeric → error → exit program
+	•	if < 0 → error → exit program
+	•	if > monthly_income → error → exit program (locked policy)
+	•	Compute
+	•	percent_of_income = spending_amount / monthly_income
+	•	Do not round before evaluation.
+	•	Route to evaluator:
+	•	if choice == 1 → housing evaluator
+	•	elif choice == 2 → food evaluator
+	•	elif choice == 3 → transportation evaluator
+	•	elif choice == 4 → entertainment evaluator
+	•	elif choice == 5 → savings evaluator
+	•	else → error → exit program (unexpected state)
+	•	Print formatted results:
+	•	Category label
+	•	Income
+	•	Spending
+	•	Percent (as % with 2 decimals)
+	•	Evaluation label
+	•	Ask “Run again? (Y/N)”
+	•	if input in { "y", "yes" } → run_again = True
+	•	else → run_again = False
+	•	Print final goodbye and end.
+
+Utility File Functions: HoweUtil.py
+Function Contract (applies to each function):
+	•	Input: percent_of_income
+	•	Logic: compare percent_of_income to thresholds defined inside the function
+	•	Output: return "Low" or "Typical" or "High"
+	•	No input() and no print() in this file
+evaluate_housing(percent_of_income)
+	•	if percent_of_income ≤ 0.25 → "Low"
+	•	elif percent_of_income ≤ 0.35 → "Typical"
+	•	else → "High"
+evaluate_food(percent_of_income)
+	•	if percent_of_income ≤ 0.09 → "Low"
+	•	elif percent_of_income ≤ 0.15 → "Typical"
+	•	else → "High"
+evaluate_transportation(percent_of_income)
+	•	if percent_of_income ≤ 0.08 → "Low"
+	•	elif percent_of_income ≤ 0.14 → "Typical"
+	•	else → "High"
+evaluate_entertainment(percent_of_income)
+	•	if percent_of_income ≤ 0.04 → "Low"
+	•	elif percent_of_income ≤ 0.09 → "Typical"
+	•	else → "High"
+evaluate_savings(percent_of_income)
+	•	if percent_of_income ≤ 0.10 → "Low"
+	•	elif percent_of_income ≤ 0.20 → "Typical"
+	•		•	else → "High" (Here, “High” represents a strong savings rate, not overspending.)
+
