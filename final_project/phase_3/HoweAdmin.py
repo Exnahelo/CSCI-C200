@@ -38,7 +38,10 @@ def show_menu():
     print("─" * 40)
     print("  1. Add a new student")
     print("  2. Add a new course")
-    print("  3. Exit")
+    print("  3. View all students")
+    print("  4. View all courses")
+    print("  5. View all enrollments")
+    print("  6. Exit")
     print("─" * 40)
 
 
@@ -73,11 +76,23 @@ def main():
             admin_obj.add_course()
 
         elif choice == "3":
+            print("\n  --- All Students ---")
+            admin_obj.view_students()
+
+        elif choice == "4":
+            print("\n  --- All Courses ---")
+            admin_obj.view_courses()
+
+        elif choice == "5":
+            print("\n  --- All Enrollments ---")
+            admin_obj.view_enrollments()
+
+        elif choice == "6":
             print("\n  Goodbye!\n")
             sys.exit()
 
         else:
-            print("  [!] Invalid choice. Please enter 1, 2, or 3.\n")
+            print("  [!] Invalid choice. Please enter a number from 1 to 6.\n")
 
 
 # ─────────────────────────────────────────────
