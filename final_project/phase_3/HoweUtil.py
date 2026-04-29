@@ -12,10 +12,12 @@ import os
 # CONSTANTS — single source of truth
 # ─────────────────────────────────────────────
 
-ADMIN_CSV_PATH       = "admins.csv"
-STUDENTS_CSV_PATH    = "students.csv"
-COURSES_CSV_PATH     = "courses.csv"
-ENROLLMENTS_CSV_PATH = "enrollments.csv"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+ADMIN_CSV_PATH       = os.path.join(BASE_DIR, "admins.csv")
+STUDENTS_CSV_PATH    = os.path.join(BASE_DIR, "students.csv")
+COURSES_CSV_PATH     = os.path.join(BASE_DIR, "courses.csv")
+ENROLLMENTS_CSV_PATH = os.path.join(BASE_DIR, "enrollments.csv")
 
 MAX_LOGIN_ATTEMPTS = 5
 
@@ -36,9 +38,11 @@ def read_csv(filepath):
     Output: list of lists (each inner list is one data row)
     """
     rows = []
+    if not os.path.exists(filepath):
+        return rows
     with open(filepath, newline="", encoding="utf-8") as f:
         reader = csv.reader(f)
-        next(reader)   # skip header row
+        next(reader, None)   # skip header row
         for row in reader:
             rows.append(row)
     return rows
