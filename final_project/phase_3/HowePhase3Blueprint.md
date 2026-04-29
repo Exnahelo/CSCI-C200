@@ -261,13 +261,13 @@ Show student menu
 Repeat:
     Display student menu:
         1. Enroll in a course
-        2. View my courses (placeholder — implemented in Phase 4)
+        2. View my courses (Phase 4 prep; not required for Phase 3 points)
         3. Exit
 
     Prompt for choice
 
     If choice = "1": enroll_in_course(student_obj)
-    Else if choice = "2": student_obj.view_my_courses()  [stub in Phase 3]
+    Else if choice = "2": student_obj.view_my_courses()  [Phase 4 prep method already present]
     Else if choice = "3": print "Goodbye." → sys.exit()
     Else: print "Invalid choice."
 
@@ -347,26 +347,67 @@ Repeat:
 
 ---
 
-## 10. Submission Checklist
+## 10. Alignment Audit
 
-- [ ] `admins.csv` — unchanged
-- [ ] `HoweAdmin.py` — full admin menu (options 1–6), view features, navigation loop, exit
-- [ ] `HoweStudent.py` — student login, student menu, `enroll_in_course()` helper
-- [ ] `HoweUtil.py` — unchanged
-- [ ] `HoweClasses.py` — Admin view methods implemented; `Student.enroll()` and `Student.is_enrolled()` implemented
-- [ ] Admin can view all students in formatted output (no passwords shown)
-- [ ] Admin can view all courses in formatted output
-- [ ] Admin can view all enrollments in formatted output (with course title)
-- [ ] Admin menu navigates cleanly between all options
-- [ ] Admin can exit the program from the menu
-- [ ] Student login authenticates against `students.csv`
-- [ ] Student login locks out after 5 failed attempts
-- [ ] Student can see course list and select a course to enroll
-- [ ] Duplicate enrollment is rejected with a clear message
-- [ ] Enrollment is saved to `enrollments.csv`
+### Rubric Alignment
+
+| Rubric Area | Blueprint Coverage | Implementation Location |
+| --- | --- | --- |
+| Admin retrieves students from CSV | Covered by `Admin.view_students()` | `HoweClasses.py` |
+| Admin formats student output | Table output excludes passwords | `HoweClasses.py` |
+| Admin retrieves courses from CSV | Covered by `Admin.view_courses()` | `HoweClasses.py` |
+| Admin formats course output | Table output includes course number and title | `HoweClasses.py` |
+| Admin retrieves enrollments from CSV | Covered by `Admin.view_enrollments()` | `HoweClasses.py` |
+| Admin formats enrollment output | Table output joins enrollment rows with course titles | `HoweClasses.py` |
+| Admin navigation and exit | Six-option menu loop with exit option | `HoweAdmin.py` |
+| Student login and lockout | Reuses `login_control()` with `Student` class and 5 attempts | `HoweStudent.py`, `HoweUtil.py` |
+| Student enrollment selection | Displays course list, validates course number, allows `back` | `HoweStudent.py` |
+| Duplicate enrollment prevention | `Student.is_enrolled()` checks before saving | `HoweClasses.py` |
+| Enrollment CSV saving | `Student.enroll()` writes `username,course_number` | `HoweClasses.py`, `HoweUtil.py` |
+
+### Algorithm Design Draft Alignment
+
+- Matches the draft's admin flow: login, 6-option menu, route each option to an `Admin` method, and exit cleanly.
+- Matches the draft's student flow: login, menu loop, `enroll_in_course(student_obj)`, duplicate check, and enrollment save.
+- Matches the draft's utility design: shared CSV readers/loaders, `login_control()`, uniqueness helpers, and CSV writing.
+- Matches the draft's class design: `User` base class, `Admin(User)`, and `Student(User)` with Phase 3 enrollment methods.
+
+### Project Plan Alignment
+
+- Keeps `admins.csv` as the only manual CSV.
+- Keeps `students.csv`, `courses.csv`, and `enrollments.csv` program-generated and out of the submitted file list.
+- Uses the planned enrollment schema: `username,course_number`.
+- Keeps constants centralized in `HoweUtil.py`.
+- Keeps OOP as part of the core implementation rather than a later retrofit.
+
+### Extra Credit Alignment
+
+- **Option 1 — Algorithm Design Document:** this blueprint now matches the living algorithm draft sections that will become the Phase 4 Word document.
+- **Option 2 — OOP:** Phase 3 uses `User`, `Admin`, and `Student` classes with inheritance, object creation in both executables, and class methods for admin views and student enrollment.
+- `Student.view_my_courses()` is present as Phase 4 prep, but Phase 3 credit is based on login and enrollment requirements.
 
 ---
 
-## 11. Conceptual Summary
+## 11. Submission Checklist
+
+- [x] `admins.csv` — unchanged
+- [x] `HoweAdmin.py` — full admin menu (options 1–6), view features, navigation loop, exit
+- [x] `HoweStudent.py` — student login, student menu, `enroll_in_course()` helper
+- [x] `HoweUtil.py` — unchanged
+- [x] `HoweClasses.py` — Admin view methods implemented; `Student.enroll()` and `Student.is_enrolled()` implemented
+- [x] Admin can view all students in formatted output (no passwords shown)
+- [x] Admin can view all courses in formatted output
+- [x] Admin can view all enrollments in formatted output (with course title)
+- [x] Admin menu navigates cleanly between all options
+- [x] Admin can exit the program from the menu
+- [x] Student login authenticates against `students.csv`
+- [x] Student login locks out after 5 failed attempts
+- [x] Student can see course list and select a course to enroll
+- [x] Duplicate enrollment is rejected with a clear message
+- [x] Enrollment is saved to `enrollments.csv`
+
+---
+
+## 12. Conceptual Summary
 
 Phase 3 completes the admin module and opens the student module. The Admin class gains three view methods that read from CSV files and display formatted, meaningful output — including a joined enrollment view that pairs usernames with course titles. The Student class gains its core enrollment methods: `is_enrolled()` checks the CSV before writing, and `enroll()` delegates to the utility layer for the actual file write. The student executable reuses `login_control()` from Phase 1 by passing `Student` as the `user_class` parameter — the same function works for both modules because it determines column indices based on the filepath. The enrollment system is built around the uniqueness check that prevents duplicate records, keeping the CSV data clean for Phase 4's view feature.
